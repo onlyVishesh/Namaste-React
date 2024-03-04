@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nested Element Using React</title>
+  </head>
+  <body>
+    <!-- Trying to copy this using react -->
+    <div class="parent">
+      <h1>I'm a parent div</h1>
+      <h2>Lets Create siblings</h2>
+      <div class="chlid">
+        <h2>I'm a child div</h2>
+      </div>
+    </div>
+    <div class="root">
+      <h1>This Will be Replaced</h1>
+    </div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script>
+      const parent = React.createElement("div", { className: "parent" }, [
+        React.createElement("h1", {}, "I'm a parent div"),
+        React.createElement("h2", {}, "Lets Create siblings"),
+        React.createElement("div", { className: "child" }, [
+          React.createElement("h2", {}, "I'm a child div"),
+        ]),
+      ]);
+
+      const root = ReactDOM.createRoot(document.querySelector(".root"));
+      root.render(parent);
+    </script>
+  </body>
+</html>
