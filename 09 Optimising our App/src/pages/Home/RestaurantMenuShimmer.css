@@ -145,7 +145,7 @@
 .shimmer-menus summary:before {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 35%;
   right: 1%;
   transform: translateY(-50%);
   width: 28px;
@@ -214,7 +214,7 @@
 .shimmer-item-name {
   display: flex;
   gap: 1rem;
-  width: 10rem;
+  min-width: 400%;
   height: 2.5rem;
   align-items: center;
   border-radius: 10px;
@@ -224,16 +224,16 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  margin-left: 11rem;
+  margin-left: 500%;
 }
 
 .shimmer-item-price {
-  width: 5rem;
+  width: 300%;
   height: 2rem;
   border-radius: 10px;
 }
 .shimmer-item-description {
-  width: 50rem;
+  min-width: 800%;
   height: 1rem;
   color: #c5c5c5;
   border-radius: 3px;
@@ -247,4 +247,175 @@
   border: 4px solid #838383;
   border-radius: 3px;
   margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .res-shimmer-menu {
+    width: 80%;
+  }
+  .res-shimmer-thumbnail {
+    padding: 1rem 8%;
+    width: 84%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .res-shimmer-thumbnail-img {
+    height: 10rem;
+    width: 12rem;
+  }
+
+  .shimmer-add-item {
+    left: 5rem;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .res-shimmer-thumbnail-data {
+    flex-wrap: wrap;
+  }
+  .res-shimmer-thumbnail-avgRating {
+    min-width: 30%;
+  }
+
+  .res-shimmer-thumbnail-deliverTime,
+  .res-shimmer-thumbnail-cost-for-two {
+    min-width: 20%;
+  }
+  .shimmer-item-description {
+    min-width: 500%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .res-shimmer-thumbnail {
+    gap: 1rem;
+  }
+
+  .res-shimmer-thumbnail-data h2 {
+    width: 200%;
+    height: 2.5rem;
+    border-radius: 10px;
+  }
+
+  .res-shimmer-thumbnail-data .p1 {
+    width: 100%;
+    height: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .res-shimmer-thumbnail-data .p2 {
+    width: 150%;
+    height: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .res-shimmer-thumbnail-extras {
+    gap: 0.75rem;
+  }
+
+  .res-shimmer-thumbnail-avgRating {
+    min-width: 20%;
+  }
+
+  .res-shimmer-thumbnail-deliverTime,
+  .res-shimmer-thumbnail-cost-for-two {
+    min-width: 20%;
+  }
+  .res-shimmer-coupons {
+    gap: 1.5rem;
+  }
+
+  .res-shimmer-coupon {
+    min-width: 15rem;
+    padding: 1rem 1rem;
+  }
+
+  .res-shimmer-coupon figure img {
+    width: 1.25rem;
+  }
+
+  .res-shimmer-coupon figure figcaption {
+    font-size: 1.1rem;
+  }
+
+  .shimmer-offer-details {
+    font-size: 0.9rem;
+    color: #c5c5c5;
+  }
+
+  .shimmer-menu-item {
+    flex-direction: column;
+  }
+
+  .shimmer-menu-item-img .menu-item-image {
+    height: 12rem;
+    width: 14rem;
+  }
+
+  .shimmer-add-item {
+    left: 5rem;
+  }
+
+  .shimmer-item-info {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .shimmer-item-name {
+    min-width: 500%;
+  }
+
+  .shimmer-isVeg div {
+    margin-left: 600%;
+  }
+
+  .shimmer-item-price {
+    width: 200%;
+  }
+  .shimmer-item-description {
+    min-width: 800%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .res-shimmer-thumbnail-img {
+    height: 0rem;
+    width: 0rem;
+  }
+  .res-shimmer-thumbnail-data h2 {
+    width: 300%;
+    height: 2.5rem;
+    border-radius: 10px;
+  }
+
+  .res-shimmer-thumbnail-data .p1 {
+    width: 200%;
+    height: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .res-shimmer-thumbnail-data .p2 {
+    width: 250%;
+    height: 1.5rem;
+    border-radius: 10px;
+  }
+
+  .res-shimmer-thumbnail-extras {
+    gap: 0.75rem;
+  }
+
+  .res-shimmer-thumbnail-avgRating {
+    min-width: 20%;
+  }
+
+  .res-shimmer-thumbnail-deliverTime,
+  .res-shimmer-thumbnail-cost-for-two {
+    min-width: 20%;
+  }
+
+  .shimmer-item-description {
+    min-width: 700%;
+  }
 }

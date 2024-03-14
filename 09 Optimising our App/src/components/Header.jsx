@@ -1,7 +1,8 @@
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/images/logo.svg";
 import useStatus from "../utils/useStatus";
 import "./Header.css";
@@ -10,9 +11,14 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const onlineStatus = useStatus();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleLoginLogout = () => {
+    setIsLoggedIn(!isLoggedIn);
   };
 
   return (
@@ -42,13 +48,20 @@ const Header = () => {
             />
           </svg>
           <ul className="links">
-            <li className="active">
+            <li
+              className={
+                location.pathname === "/" ||
+                location.pathname.includes("/restaurants/")
+                  ? "active"
+                  : ""
+              }
+            >
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className={location.pathname === "/about" ? "active" : ""}>
               <Link to="/about">About</Link>
             </li>
-            <li>
+            <li className={location.pathname === "/contact" ? "active" : ""}>
               <Link to="/contact">Contact</Link>
             </li>
           </ul>
@@ -60,7 +73,7 @@ const Header = () => {
           </div>
           <div className="btn">
             {isLoggedIn ? (
-              <button type="submit" onClick={() => setIsLoggedIn(false)}>
+              <button type="submit" onClick={handleLoginLogout}>
                 <FontAwesomeIcon icon={faUser} />
                 <p>Logout</p>
               </button>
@@ -69,9 +82,7 @@ const Header = () => {
                 <button
                   type="submit"
                   className="login-btn"
-                  onClick={() => {
-                    setIsLoggedIn(true);
-                  }}
+                  onClick={handleLoginLogout}
                 >
                   <FontAwesomeIcon
                     icon={faUser}
