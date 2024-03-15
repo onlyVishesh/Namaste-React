@@ -1,5 +1,6 @@
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { doSignOut, useAuth } from "../utils/auth";
 
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -9,7 +10,7 @@ import "./Header.css";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { currentUser, userLoggedIn } = useAuth();
   const onlineStatus = useStatus();
   const location = useLocation();
 
@@ -17,8 +18,12 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const handleLoginLogout = () => {
-    setIsLoggedIn(!isLoggedIn);
+  const handleLogout = async () => {
+    try {
+      await doSignOut();
+    } catch (error) {
+      console.error("Error signing out", error);
+    }
   };
 
   return (
@@ -32,6 +37,11 @@ const Header = () => {
             height={"75px"}
           />
         </Link>
+        {userLoggedIn ? (
+          <section className="user-name user-name1">Hi, {currentUser.displayName}</section>
+        ) : (
+          ""
+        )}
         <nav className={menuOpen ? "toggle-menu" : ""}>
           <svg
             className="close"
@@ -47,6 +57,13 @@ const Header = () => {
               fill="red"
             />
           </svg>
+          {userLoggedIn ? (
+            <section className="user-name user-name2">
+              Hi, {currentUser.displayName}
+            </section>
+          ) : (
+            ""
+          )}
           <ul className="links">
             <li
               className={
@@ -72,18 +89,20 @@ const Header = () => {
             </button>
           </div>
           <div className="btn">
-            {isLoggedIn ? (
-              <button type="submit" onClick={handleLoginLogout}>
-                <FontAwesomeIcon icon={faUser} />
+            {userLoggedIn ? (
+              <button type="button" onClick={handleLogout}>
+                <FontAwesomeIcon
+                  icon={faUser}
+                  style={{
+                    color: onlineStatus ? "#00ca00" : "#ff0000",
+                    fontSize: "20px",
+                  }}
+                />
                 <p>Logout</p>
               </button>
             ) : (
               <Link to="/login">
-                <button
-                  type="submit"
-                  className="login-btn"
-                  onClick={handleLoginLogout}
-                >
+                <button type="submit" className="login-btn">
                   <FontAwesomeIcon
                     icon={faUser}
                     style={{

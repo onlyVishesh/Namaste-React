@@ -4,17 +4,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import useRestaurantCard from "../../utils/useRestaurantcard";
-import useStatus from "../../utils/useStatus";
 import "./Home.css";
 import RestaurantCard from "./RestaurantCard";
 import ShimmerCards from "./ShimmerCards";
-
-import Offline from "../../components/Offline";
 
 const Home = () => {
   const allResList = useRestaurantCard();
   const [filteredRes, setFilteredRes] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [showFilterSlider, setShowFilterSlider] = useState(false); // State to manage filter slider visibility
+  const [sliderValue, setSliderValue] = useState(1); // State to manage slider value
 
   // Update filteredRes when allResList changes
   useEffect(() => {
@@ -22,17 +21,37 @@ const Home = () => {
       setFilteredRes(allResList);
     }
   }, [allResList]);
-  // console.log(filteredRes);
+
   // Scroll to top function
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Online status
-  const onlineStatus = useStatus();
 
-  // Render
-  if (!onlineStatus) return <Offline />;
+  // Filter function
+  const handleFilter = () => {
+    if (filteredRes.length === allResList.length) {
+      setFilteredRes(
+        allResList.filter((res) => res.info.avgRating >= sliderValue)
+      );
+    } else {
+      setFilteredRes(allResList);
+    }
+    setShowFilterSlider(!showFilterSlider); // Toggle filter slider visibility
+  };
+
+  // Reset filter function
+  const handleReset = () => {
+    setSliderValue(1);
+    setFilteredRes(allResList);
+  };
+
+  // Apply filter function
+  const handleGo = () => {
+    setFilteredRes(
+      allResList.filter((res) => res.info.avgRating >= sliderValue)
+    );
+  };
 
   return (
     <div className="home">
@@ -42,9 +61,7 @@ const Home = () => {
           value={searchText}
           type="text"
           placeholder="Search Restaurant"
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
+          onChange={(e) => setSearchText(e.target.value)}
           onKeyUp={() => {
             setFilteredRes(
               allResList.filter((res) =>
@@ -56,22 +73,58 @@ const Home = () => {
         <button className="search-btn">
           <FontAwesomeIcon icon={faSearch} />
         </button>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            filteredRes.length === allResList.length
-              ? setFilteredRes(
-                  filteredRes.filter((res) => res.info.avgRating > 4)
-                )
-              : setFilteredRes(allResList);
-          }}
-        >
+        <button className="filter-btn" onClick={handleFilter}>
           <FontAwesomeIcon icon={faFilter} />
         </button>
         <button className="sort-btn" onClick={() => {}}>
           <FontAwesomeIcon icon={faSort} />
         </button>
       </div>
+      {showFilterSlider && (
+        <div className="filter-container">
+          <h2>Stars Above</h2>
+          <div className="range-item">
+            <div className="range-input">
+              <input
+                type="range"
+                min="1"
+                max="5"
+                className="form-range"
+                name="dataShared"
+                value={sliderValue}
+                onChange={(e) => setSliderValue(parseInt(e.target.value))}
+              />
+              <div className="range-line">
+                <span
+                  className="active-line"
+                  style={{ width: `${(sliderValue - 1) * 25}%` }}
+                ></span>
+              </div>
+              <div className="dot-line">
+                <span
+                  className="active-dot"
+                  style={{ left: `${(sliderValue - 1) * 25}%` }}
+                ></span>
+              </div>
+            </div>
+            <ul className="filter-value">
+              {[1, 2, 3, 4, 5].map((num) => (
+                <li className="" key={num}>
+                  <span>{num}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="filter-buttons">
+              <button className="filter-reset-btn" onClick={handleReset}>
+                Reset
+              </button>
+              <button className="filter-go-btn" onClick={handleGo}>
+                Go
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="res-container">
         {allResList?.length === 0 ? (
           <ShimmerCards />
@@ -81,17 +134,15 @@ const Home = () => {
             <strong>{searchText}</strong>"
           </div>
         ) : (
-          filteredRes.map((res) => {
-            return (
-              <Link
-                to={"/restaurants/" + res.info.id}
-                key={res.info.id}
-                onClick={handleClick}
-              >
-                <RestaurantCard resData={res} />
-              </Link>
-            );
-          })
+          filteredRes.map((res) => (
+            <Link
+              to={"/restaurants/" + res.info.id}
+              key={res.info.id}
+              onClick={handleClick}
+            >
+              <RestaurantCard resData={res} />
+            </Link>
+          ))
         )}
       </div>
     </div>

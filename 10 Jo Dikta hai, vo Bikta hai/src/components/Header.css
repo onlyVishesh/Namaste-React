@@ -63,6 +63,14 @@ nav {
   display: block;
   margin: 4em auto;
 }
+.user-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.user-name1 {
+  display: none;
+}
 
 .links li a {
   font-size: 1.3rem;
@@ -127,7 +135,7 @@ nav {
   margin: 0;
 }
 
-@media (min-width: 750px) {
+@media (min-width: 850px) {
   header {
     padding: 1em 0em;
   }
@@ -138,6 +146,14 @@ nav {
 
   .hide-mobile {
     display: block;
+  }
+
+  .user-name1 {
+    display: none;
+  }
+  .user-name2 {
+    display: block;
+    margin-right: 2rem;
   }
 
   nav {
@@ -163,5 +179,14 @@ nav {
   .links li.active {
     font-weight: bold;
     border-bottom: 3px solid var(--primary-color);
+  }
+}
+
+@media screen and (max-width: 950) and (min-width: 850px) {
+  .links {
+    gap: 1.5rem;
+  }
+  .user-name {
+    margin-right: 0;
   }
 }
