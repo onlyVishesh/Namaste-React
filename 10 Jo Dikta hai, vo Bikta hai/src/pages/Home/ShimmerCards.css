@@ -1,0 +1,96 @@
+/* Cards styling */
+
+.shimmer-res-card {
+  width: 300px;
+  height: 350px;
+  padding: 1rem 1rem;
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  color: var(--primary-font-color);
+}
+
+.shimmer-res-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+}
+
+.shimmer-res-card:hover {
+  cursor: pointer;
+  transform: scale(0.95);
+  transition: all 0.3s linear;
+}
+
+.shimmer-res-image .shimmer-res-img {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  margin: 0rem auto;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0em -1em 1em -0.5em rgb(0, 0, 0);
+  -moz-box-shadow: inset 0em -1em 1em -0.5em rgb(0, 0, 0);
+  box-shadow: inset 0em -3em 3em -1.2em rgb(0, 0, 0);
+}
+
+.shimmer-res-offer {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  width: 60%;
+  border-radius: 10px;
+  height: 30px;
+  color: var(--primary-font-color);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.shimmer-res-name {
+  width: 60%;
+  height: 30px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  margin: 0.5rem auto;
+}
+.shimmer-res-cuisines {
+  text-transform: capitalize;
+  width: 80%;
+  height: 14px;
+  border-radius: 8px;
+}
+
+.shimmer-res-location {
+  text-transform: capitalize;
+  width: 40%;
+  height: 14px;
+  border-radius: 8px;
+}
+
+.shimmer-extras {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #666666;
+}
+
+.shimmer-res-avgRating {
+  padding: 0.2rem 0.4rem;
+  border-radius: 5px;
+  width: 15%;
+  height: 20px;
+}
+
+.shimmer-res-deliverTime {
+  width: 20%;
+  height: 18px;
+  border-radius: 100px;
+}
