@@ -1,0 +1,45 @@
+.feature {
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  background-color: #1f1f1f;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: color 0.2s ease-in-out;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.2);
+}
+
+.feature h3,
+p {
+  z-index: 1; 
+}
+
+.feature p {
+  text-align: justify;
+  font-size: 1.2rem;
+  color: #b6b6b6;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  opacity: 1;
+  transform: scale(0);
+  transition: transform 0.6s ease-in-out;
+  z-index: 0;
+}
+
+.feature:hover .ripple {
+  transform: scale(1.1);
+}
