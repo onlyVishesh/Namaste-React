@@ -1,0 +1,271 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.container {
+  display: flex !important;
+  flex-direction: column;
+  background-color: #1f1f1f;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
+  margin: auto;
+  box-shadow: 0px 5px 10px #1f1f1f;
+}
+
+.container p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
+}
+
+.container span {
+  font-size: 12px;
+}
+
+.container a {
+  color: #333;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 15px 0 10px;
+}
+
+.container button {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 500;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.container button.hidden {
+  background-color: transparent;
+  border-color: #fff;
+}
+
+.container form {
+  background-color: #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+}
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.social-icons .icon {
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c3ccd7;
+  padding: 0em 3em;
+  cursor: pointer;
+  position: relative;
+  gap: 0.4em;
+  width: 40px;
+  height: 40px;
+  border-radius: 0.4em;
+  color: #000;
+  font-size: 1.3rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.social-icons .icon::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.4em;
+  background-color: var(--primary-color);
+  z-index: -1;
+  transform: scale(0);
+  transition: all 0.2s ease-in-out;
+}
+.social-icons .icon::before {
+  transform: scale(1);
+}
+
+.social-icons .icon:hover {
+  color: var(--primary-font-color);
+  transform: scale(1.1);
+  transition: all 0.4s ease-in-out;
+}
+.container input {
+  background-color: #c3ccd7;
+  color: #000;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+form .forgot-password {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.sign-in {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.container.active .sign-in {
+  transform: translateX(100%);
+}
+
+.sign-up {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+  transition: all 0.5s;
+}
+
+.container.active .sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+@keyframes move {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.toggle-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
+  z-index: 10;
+}
+
+.container.active .toggle-container {
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
+}
+
+.toggle {
+  background-color: #512da8;
+  height: 100%;
+  background: linear-gradient(to right, #5c6bc0, #512da8);
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.container.active .toggle {
+  transform: translateX(50%);
+}
+
+.toggle-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  top: 0;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.toggle-panel p {
+  font-size: 1.2rem;
+}
+
+.toggle-left {
+  transform: translateX(-200%);
+  padding: 0;
+}
+
+.container.active .toggle-left {
+  transform: translateX(0);
+}
+
+.toggle-right {
+  right: 0;
+  transform: translateX(0);
+  padding: 0;
+}
+
+.container.active .toggle-right {
+  transform: translateX(200%);
+}
+
+.container .close-button {
+  position: absolute;
+  top: 10px;
+  right: -1%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333; /* Adjust color as needed */
+  font-size: 20px;
+  z-index: 100;
+}
+
+.container .close-button:hover {
+  color: red; /* Adjust color on hover as needed */
+}
+
+@media screen and (max-width: 600px) {
+  .container h1 {
+    font-size: 1.55rem;
+  }
+  .social-icons .icon {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+}
