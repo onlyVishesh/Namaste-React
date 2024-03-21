@@ -77,9 +77,9 @@ const Home = () => {
         <button className="filter-btn" onClick={handleFilter}>
           <FontAwesomeIcon icon={faFilter} />
         </button>
-        <button className="sort-btn" onClick={() => {}}>
+        {/* <button className="sort-btn" onClick={() => {}}>
           <FontAwesomeIcon icon={faSort} />
-        </button>
+        </button> */}
       </div>
       {showFilterSlider && (
         <div className="filter-container">

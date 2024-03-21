@@ -1,0 +1,48 @@
+.offline {
+  width: 100%;
+  min-height: 45vh;
+  display: relative;
+  margin: 0;
+  padding: 0;
+}
+.offline .wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  align-items: center;
+  justify-content: center;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.offline h1 {
+  color: white;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 50px;
+  letter-spacing: 5px;
+  line-height: 1rem;
+  text-shadow: 0 0 3px white;
+}
+.offline h4 {
+  color: #f1f1f1;
+  font-family: arial;
+  padding-top: 20px;
+  font-weight: 300;
+  font-size: 16px;
+}
+.offline .button {
+  display: block;
+  margin: 20px 0 0;
+  padding: 15px 30px;
+  background: #22254c;
+  color: white;
+  font-family: arial;
+  letter-spacing: 5px;
+  border-radius: 0.4rem;
+  text-decoration: none;
+  box-shadow: 0 0 15px #22254c;
+}

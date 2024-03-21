@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import "./Features.css";
+import "./Features.css";
 
 const Features = (props) => {
   const { title, description } = props.feature;
