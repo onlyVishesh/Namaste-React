@@ -1,4 +1,4 @@
-<p align="center"><img src="./public/favicon.svg" width="15%" background="transparent"/></p>
+<p align="center"></p>
 
 <h1 align="center">TasteBit Express</h1>
 
